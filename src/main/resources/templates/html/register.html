@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Candidate Profile AI - Register</title>
+
+<link rel="stylesheet" th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+<div class="login-container">
+
+
+<div class="login-card">
+
+    <h1>Create Account</h1>
+
+    <p class="subtitle">
+        Register to continue
+    </p>
+
+    <form action="/register" method="post">
+
+        <div class="input-group">
+            <input
+                type="text"
+                name="username"
+                placeholder="Enter Full Name"
+                required>
+        </div>
+
+        <div class="input-group">
+            <input
+                type="email"
+                name="email"
+                placeholder="Enter Email"
+                required>
+        </div>
+
+        <div class="input-group">
+            <input
+                type="password"
+                name="password"
+                placeholder="Create Password"
+                required>
+        </div>
+
+        <div class="input-group">
+            <input
+                type="password"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                required>
+        </div>
+
+        <button type="submit" class="login-btn">
+            Register
+        </button>
+
+    </form>
+
+    <div class="register-link">
+
+        Already have an account?
+
+        <a href="/login">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+
+</div>
+
+</body>
+</html>

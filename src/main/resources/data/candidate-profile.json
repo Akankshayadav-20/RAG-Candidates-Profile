@@ -1,0 +1,115 @@
+{
+  "basicDetails": {
+    "name": "Akanksha Yadav",
+    "background": "Bachelor of Computer Applications (BCA) graduate and passionate about backend development, problem solving, and building AI-powered applications.",
+    "experience": "Fresher",
+    "location": "India"
+  },
+
+  "education": {
+    "degree": "Bachelor of Computer Applications (BCA)",
+    "college": "Rajarshi School of Management and Technology",
+    "university": "Mahatma Gandhi kashi Vidyapeeth",
+    "graduationYear": "2025"
+  },
+
+  "skills": {
+    "programmingLanguages": [
+      "Java",
+      "JavaScript"
+    ],
+    "frontend": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Thymeleaf"
+    ],
+    "backend": [
+      "Spring Boot",
+      "Spring MVC",
+      "Spring Security",
+      "Hibernate",
+      "JPA",
+      "REST API"
+    ],
+    "databases": [
+      "MySQL",
+      "PostgreSQL"
+    ],
+    "tools": [
+      "Git",
+      "GitHub",
+      "Postman",
+      "STS",
+      "Eclipse"
+    ],
+    "areasOfExpertise": [
+      "Java Full Stack Development",
+      "Backend Development",
+      "REST API Development",
+      "Authentication and Authorization",
+      "Retrieval-Augmented Generation (RAG)",
+      "OAuth2 Integration"
+    ]
+  },
+
+  "projects": [
+    {
+      "title": "Student Management System",
+      "description": "Developed a secure full-stack Student Management System using Spring Boot with authentication and CRUD operations for managing students and courses.",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "Hibernate",
+        "JPA",
+        "PostgreSQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Thymeleaf"
+      ],
+      "outcome": "Successfully developed a secure web application demonstrating Java Full Stack development skills."
+    },
+    {
+      "title": "Salesforce Validation Manager",
+      "description": "Developed a web application that generates Salesforce validation rules dynamically based on user input, reducing manual effort and improving productivity.",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "REST API",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Thymeleaf"
+      ],
+      "outcome": "Simplified the process of creating Salesforce validation rules through an easy-to-use interface."
+    },
+    {
+      "title": "Candidate Profile AI Agent",
+      "description": "Developed a Retrieval-Augmented Generation (RAG) based AI application capable of answering interview questions using candidate profile data stored in a JSON knowledge base.",
+      "technologies": [
+        "Java",
+        "Spring Boot",
+        "Spring Security",
+        "OAuth2",
+        "PostgreSQL",
+        "JSON",
+        "Groq API",
+        "REST API"
+      ],
+	    "outcome": "Successfully developed an AI-powered RAG application that retrieves candidate profile information and generates accurate interview responses using the Groq LLM API."
+    }
+  ],
+
+  "hobbies": [
+    "Coding",
+    "Learning New Technologies",
+    "Problem Solving",
+    "Travelling"
+  ],
+  
+  "interviewResponses": {
+     "introduceYourself": "My name is Akanksha Yadav. I recently completed my Bachelor of Computer Applications (BCA) from Mahatma Gandhi Kashi Vidyapith. After graduation, I joined QSpiders to strengthen my Java Full Stack Development skills. During my training, I gained hands-on experience with Core Java, JDBC, Servlets, Hibernate, Spring Boot, Spring MVC, Spring Security, REST APIs, MySQL, PostgreSQL, HTML, CSS, JavaScript, Git, and GitHub. I developed projects including a Student Management System and a RAG-based Candidate Profile AI Agent with Google OAuth and Groq API integration. These projects enhanced my backend development, database management, authentication, API integration, and problem-solving skills. As a fresher, I am excited to begin my career as an Associate Software Engineer, where I can contribute to meaningful projects while continuously learning and growing."
+   }
+}

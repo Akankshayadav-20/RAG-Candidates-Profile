@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Candidate Profile AI Agent</title>
+
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<div class="chat-page">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Candidate AI</h2>
+
+        <div class="profile-card">
+
+            <h3>Akanksha Yadav</h3>
+
+            <p>Aspiring Associate Software Engineer</p>
+
+        </div>
+
+        <hr>
+
+        <a href="/chat" class="menu-item">
+            💬 New Chat
+        </a>
+
+        <a href="/logout" class="menu-item">
+            🚪 Logout
+        </a>
+
+    </div>
+
+    <!-- Chat Section -->
+
+    <div class="chat-section">
+
+        <div class="chat-header">
+
+            Candidate Profile AI Agent
+
+            <span class="status">
+                🟢 Online
+            </span>
+
+        </div>
+
+        <div id="chat-box" class="chat-box">
+
+            <div class="bot-message">
+
+                👋 Welcome to Candidate Profile AI
+
+                <br><br>
+
+                You can ask me questions like:
+
+                <ul>
+
+                    <li>Tell me about yourself</li>
+
+                    <li>Explain your projects</li>
+
+                    <li>What are your technical skills?</li>
+
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <div class="input-area">
+
+            <input
+                    type="text"
+                    id="question"
+                    placeholder="Ask anything about the candidate...">
+
+            <button onclick="askQuestion()">
+                Send
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/js/chat.js"></script>
+
+</body>
+
+</html>
