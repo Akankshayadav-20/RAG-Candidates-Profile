@@ -248,7 +248,7 @@ rag-candidate-profile
 Application URL
 
 ```
-Add Render URL here after deployment
+https://rag-candidates-profile.onrender.com
 ```
 
 # Future Improvements
@@ -264,7 +264,4 @@ Add Render URL here after deployment
 # Author
 
 **Akanksha Yadav**
-
-2025 BCA Graduate
-
-Aspiring Associate Software Engineer
+ Aspiring Associate Software Engineer
