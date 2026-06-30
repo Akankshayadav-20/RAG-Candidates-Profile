@@ -1,160 +1,157 @@
-# Candidate Profile AI Agent (RAG-Based)
+# 🧠 Candidate Profile AI Agent (RAG-Based)
 
-## Overview
+## 📌 Overview
 
 Candidate Profile AI Agent is a Retrieval-Augmented Generation (RAG) based web application that answers interview questions using a structured candidate profile stored as a JSON knowledge base.
 
-The application retrieves relevant candidate information and sends it to a Large Language Model (Groq LLM) to generate accurate, context-aware responses.
+The system retrieves relevant candidate information and sends it to a Large Language Model (Groq LLM) to generate accurate, context-aware responses.
 
-The system also provides secure authentication using Spring Security with both local login and Google OAuth2.
+The application also supports secure authentication using Spring Security with local login and Google OAuth2.
 
-## Features
+## 🚀 Features
 
-* User Registration & Login
-* Google OAuth2 Authentication
-* Secure Password Encryption (BCrypt)
-* Forgot Password & Reset Password
-* AI-powered Candidate Profile Chatbot
-* Retrieval-Augmented Generation (RAG)
-* JSON Knowledge Base
-* Groq LLM API Integration
-* PostgreSQL Database
-* Dockerized Application
-* Ready for Cloud Deployment (Render)
+### 👤 Authentication
+- User Registration & Login
+- Google OAuth2 Authentication
+- Secure Password Encryption (BCrypt)
+- Forgot Password & Reset Password
 
-## Tech Stack
+### 💬 AI Chat System
+- AI-powered Candidate Profile Chatbot
+- Retrieval-Augmented Generation (RAG)
+- Groq LLM API Integration
+- JSON Knowledge Base
+
+### 💬 Chat Session Management (Latest Improvement)
+
+The application now includes an improved Chat Session system that makes the chatbot experience more structured and scalable.
+
+#### 🔹 What was improved
+- Introduced **ChatSession entity** to manage multiple conversations per user
+- Each chat message is linked to a specific session using `session_id`
+- Prevents mixing of conversations between different chats
+- Allows users to maintain multiple independent chat threads (like ChatGPT)
+
+#### 🔹 Key Benefits
+- Better conversation organization
+- Clean separation of chat histories
+- Easy navigation between previous chats
+- Improved scalability for future enhancements such as:
+  - Renaming chat sessions
+  - Deleting sessions
+  - Searching within conversations
+
+#### 🔹 Flow
+User → Select/Create Session → Ask Question → Store ChatHistory → Retrieve by Session → Display Chat Thread
+
+### 🗄️ Database
+- PostgreSQL Database
+- Session-wise chat storage
+- Chat history tracking
+
+### 🐳 Deployment
+- Dockerized Application
+- Ready for Render Cloud Deployment
+
+## 🛠️ Tech Stack
 
 ### Backend
-
-* Java 17
-* Spring Boot
-* Spring Security
-* Spring MVC
-* Spring Data JPA
-* Hibernate
+- Java 17
+- Spring Boot
+- Spring Security
+- Spring MVC
+- Spring Data JPA
+- Hibernate
 
 ### Frontend
-
-* HTML
-* CSS
-* JavaScript
-* Thymeleaf
+- HTML
+- CSS
+- JavaScript
+- Thymeleaf
 
 ### Database
-
-* PostgreSQL
+- PostgreSQL
 
 ### AI
-
-* Groq API (Llama 3.3 70B Versatile)
+- Groq API (Llama 3.3 70B Versatile)
 
 ### Authentication
-
-* Spring Security
-* Google OAuth2
+- Spring Security
+- Google OAuth2
 
 ### Deployment
-
-* Docker
-* Render
-
-# Project Architecture
-
-                User
-
-                  │
-
-                  ▼
-
-      Spring Boot Web Application
-
-                  │
-
-        Spring Security Authentication
-
-                  │
-
-             Chat Controller
-
-                  │
-
-              RagService
-
-                  │
-
-        RetrieverService
-
-                  │
-
-        candidate-profile.json
-
-                  │
-
-      Prompt Construction
-
-                  │
-
-            Groq LLM API
-
-                  │
-
-          AI Generated Answer
-
-                  │
-
-                  ▼
-
-               Browser
+- Docker
+- Render
 
 
-# RAG Implementation
+## 🏗️ Project Architecture
 
-This project follows a simple Retrieval-Augmented Generation pipeline.
+
+User
+│
+▼
+Spring Boot Web Application
+│
+Spring Security Authentication
+│
+Chat Controller
+│
+ChatSession Manager
+│
+RAG Service
+│
+Retriever Service
+│
+candidate-profile.json
+│
+Prompt Construction
+│
+Groq LLM API
+│
+AI Generated Response
+│
+ChatHistory Saved (Session-wise)
+│
+Browser UI
+
+## 🧠 RAG Implementation
 
 ### Step 1
-
-The candidate profile is stored as a structured JSON dataset.
-
-candidate-profile.json
-
+Candidate profile is stored as structured JSON:
+src/main/resources/data/candidate-profile.json
 
 ### Step 2
-
-When a user asks a question, the RetrieverService loads the candidate profile from the JSON file.
+User question is received by the backend.
 
 ### Step 3
-
-The retrieved profile information is combined with the user's question to build a prompt.
-
-Example:
-
-Candidate Profile:
-
-Interview Question:
-Tell me about yourself
+RetrieverService loads relevant candidate data.
 
 ### Step 4
-
-The prompt is sent to the Groq API.
+Prompt is constructed using:
+- Candidate profile context
+- User question
 
 ### Step 5
+Prompt is sent to Groq API.
 
-Groq generates a response strictly based on the provided profile.
+### Step 6
+LLM generates response based only on provided context.
 
-# Dataset Used
+## 📊 Dataset Used
 
-The application uses a structured JSON dataset containing:
+The JSON dataset contains:
 
-* Basic Details
-* Education
-* Skills
-* Projects
-* Technologies
-* Outcomes
-* Hobbies
-* Interview Responses
+- Basic Details
+- Education
+- Skills
+- Projects
+- Technologies
+- Outcomes
+- Hobbies
+- Interview Responses
 
 Location:
+
 src/main/resources/data/candidate-profile.json
 
 # Embedding Approach
