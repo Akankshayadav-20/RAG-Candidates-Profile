@@ -1,110 +1,99 @@
+let currentSessionId = document.getElementById("sessionId")?.value || null;
+// ---------------- ASK QUESTION ----------------
 async function askQuestion() {
 
     let input = document.getElementById("question");
     let question = input.value.trim();
 
-    if (question === "") {
-        return;
-    }
+    if (question === "") return;
 
     let chatBox = document.getElementById("chat-box");
-
     let button = document.querySelector(".input-area button");
 
     button.disabled = true;
 
-    // Show user message
+    const time = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
 
-    chatBox.innerHTML += `
+    chatBox.insertAdjacentHTML("beforeend", `
         <div class="user-message">
             <strong>You</strong><br>
             ${question}
         </div>
-    `;
-
-    chatBox.scrollTop = chatBox.scrollHeight;
+    `);
 
     input.value = "";
-
-    // Typing Indicator
-
-    chatBox.innerHTML += `
-        <div id="typing" class="ai-message">
-            Candidate AI is typing...
-        </div>
-    `;
-
     chatBox.scrollTop = chatBox.scrollHeight;
+
+    chatBox.insertAdjacentHTML("beforeend", `
+        <div id="typing" class="ai-message">
+            <strong>AI</strong><br>
+            typing...
+        </div>
+    `);
 
     try {
 
         let response = await fetch("/ask", {
-
             method: "POST",
-
             headers: {
                 "Content-Type": "application/json"
             },
-
-            body: JSON.stringify({
-                question: question
-            })
-
+			body: JSON.stringify({
+			    sessionId: currentSessionId ? Number(currentSessionId) : null,
+			    question: question
+			})
         });
-
-        if (!response.ok) {
-			const error = await response.text();
-            throw new Error(erro);
-        }
 
         let data = await response.json();
 
-        // Remove typing message
+        document.getElementById("typing")?.remove();
 
-        document.getElementById("typing").remove();
-
-        // Show AI response
-
-        chatBox.innerHTML += `
+        chatBox.insertAdjacentHTML("beforeend", `
             <div class="ai-message">
-                <strong>Candidate AI</strong><br>
+                <strong>AI</strong><br>
                 ${data.answer}
             </div>
-        `;
-
-    } catch (error) {
-
-        if (document.getElementById("typing")) {
-            document.getElementById("typing").remove();
-        }
-
-        chatBox.innerHTML += `
-            <div class="ai-message">
-                ❌ Unable to connect to the server.
-            </div>
-        `;
-
-    } finally {
-
-        button.disabled = false;
+        `);
 
         chatBox.scrollTop = chatBox.scrollHeight;
 
+    } catch (error) {
+
+        document.getElementById("typing")?.remove();
+
+        chatBox.insertAdjacentHTML("beforeend", `
+            <div class="ai-message">
+                ❌ Error occurred
+            </div>
+        `);
     }
 
+    button.disabled = false;
 }
 
-// Press Enter to Send
 
+// ---------------- NEW CHAT ----------------
+async function newChat() {
+
+    let response = await fetch("/chat/new", {
+        method: "POST"
+    });
+
+    let sessionId = await response.text();
+
+    window.location.href = "/chat/" + sessionId;
+}
+
+
+// ---------------- ENTER KEY ----------------
 document.getElementById("question")
 .addEventListener("keypress", function(event) {
 
     if (event.key === "Enter") {
-
         event.preventDefault();
-
         askQuestion();
-
     }
-
 });

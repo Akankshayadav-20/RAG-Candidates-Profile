@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Candidate Profile AI Agent</title>
 
 <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -12,27 +11,47 @@
 
 <body>
 
+	<input type="hidden"
+	       id="sessionId"
+	       th:value="${currentSession != null ? currentSession.id : ''}" />
+		   
 <div class="chat-page">
 
     <!-- Sidebar -->
-
     <div class="sidebar">
 
         <h2>Candidate AI</h2>
 
         <div class="profile-card">
-
-            <h3>Akanksha Yadav</h3>
-
-            <p>Aspiring Associate Software Engineer</p>
-
+            <h3 th:text="${user.username}">User Name</h3>
+            <p th:text="${user.email}">user@gmail.com</p>
         </div>
 
         <hr>
 
-        <a href="/chat" class="menu-item">
+        <a href="#" class="menu-item" onclick="newChat(); return false;">
             💬 New Chat
         </a>
+
+        <hr>
+
+        <h3 class="history-title">Recent Chats</h3>
+
+        <div class="history-list">
+
+			<div th:each="chatSession : ${sessions}">
+
+			    <a th:href="@{'/chat/' + ${chatSession.id}}" class="history-item">
+
+			        <span th:text="${chatSession.title}"></span>
+
+			    </a>
+
+			</div>
+
+        </div>
+
+        <hr>
 
         <a href="/logout" class="menu-item">
             🚪 Logout
@@ -41,39 +60,30 @@
     </div>
 
     <!-- Chat Section -->
-
     <div class="chat-section">
 
         <div class="chat-header">
-
             Candidate Profile AI Agent
-
-            <span class="status">
-                🟢 Online
-            </span>
-
+            <span class="status">🟢 Online</span>
         </div>
 
         <div id="chat-box" class="chat-box">
 
             <div class="bot-message">
-
                 👋 Welcome to Candidate Profile AI
+            </div>
 
-                <br><br>
+            <div th:each="chat : ${chatHistory}">
 
-                You can ask me questions like:
+                <div class="user-message">
+                    <strong>You</strong><br>
+                    <span th:text="${chat.question}"></span>
+                </div>
 
-                <ul>
-
-                    <li>Tell me about yourself</li>
-
-                    <li>Explain your projects</li>
-
-                    <li>What are your technical skills?</li>
-
-
-                </ul>
+                <div class="ai-message">
+                    <strong>AI</strong><br>
+                    <span th:utext="${chat.answer}"></span>
+                </div>
 
             </div>
 
@@ -81,14 +91,8 @@
 
         <div class="input-area">
 
-            <input
-                    type="text"
-                    id="question"
-                    placeholder="Ask anything about the candidate...">
-
-            <button onclick="askQuestion()">
-                Send
-            </button>
+            <input type="text" id="question" placeholder="Ask anything...">
+            <button onclick="askQuestion()">Send</button>
 
         </div>
 
@@ -99,5 +103,4 @@
 <script src="/js/chat.js"></script>
 
 </body>
-
 </html>
