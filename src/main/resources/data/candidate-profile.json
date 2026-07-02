@@ -15,26 +15,24 @@
 
   "skills": {
     "programmingLanguages": [
-      "Java",
-      "JavaScript"
+      "python",
+      "C#"
     ],
     "frontend": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Thymeleaf"
+      "Nextjs",
+      "Angular",
+      
+      "react.js"
+	  
     ],
     "backend": [
-      "Spring Boot",
-      "Spring MVC",
-      "Spring Security",
-      "Hibernate",
-      "JPA",
-      "REST API"
+      "fastApi",
+      "kotlin"
+      
     ],
     "databases": [
-      "MySQL",
-      "PostgreSQL"
+     
+	  "MongoDb"
     ],
     "tools": [
       "Git",
@@ -44,12 +42,9 @@
       "Eclipse"
     ],
     "areasOfExpertise": [
-      "Java Full Stack Development",
-      "Backend Development",
-      "REST API Development",
-      "Authentication and Authorization",
-      "Retrieval-Augmented Generation (RAG)",
-      "OAuth2 Integration"
+      "Python Full Stack Development",
+      "Android Development",
+      "GraphQlApi "
     ]
   },
 
